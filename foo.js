@@ -1,3 +1,0 @@
-some = () => {
-  console, log("");
-};

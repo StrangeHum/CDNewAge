@@ -7,6 +7,11 @@ app = FastAPI()
 router = RabbitRouter()
 
 
+@router.get("/")
+async def make_order():
+    return {"data": "OK"}
+
+
 @router.post("/order")
 async def make_order(name: str):
     await router.broker.publish(
