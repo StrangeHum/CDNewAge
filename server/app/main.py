@@ -8,8 +8,13 @@ app = FastAPI()
 
 @app.get("/users")
 async def make_order():
-    return [{"id": 1, "name": ""}]
+    return [{"id": 1, "name": "src"}]
 
 
-if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0")
+@app.get("/foo")
+async def make_foo():
+    return [{"id": 1, "name": "foo"}]
+
+
+# if __name__ == "__main__":
+#     uvicorn.run("main:app", host="0.0.0.0")
