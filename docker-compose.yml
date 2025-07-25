@@ -5,9 +5,8 @@ services:
     container_name: foo-api
     command: uvicorn app.main:app --host 0.0.0.0 --reload
     build:
-      .
-      # context: .
-      # dockerfile: Dockerfile
+      context: .
+      dockerfile: docker/Dockerfile.server
 
     ports:
       - "8000:8000"
@@ -17,26 +16,12 @@ services:
       - ./app:/app/app
     restart: on-failure
 
-    # depends_on:
-    #   - rabbitmq
-    #depends_on: #Зависимость от других контейнеров, гарантирует что будет запущен после запуска других контейнеров
+  #   depends_on:
+  #     - rabbitmq
+
   # rabbitmq:
   #   image: rabbitmq:3-management
   #   hostname: rabbitmq
   #   ports:
   #     - "5672:5672"
   #     - "15672:15672"
-  # environment:
-  #   RABBITMQ_DEFAULT_USER: guest
-  #   RABBITMQ_DEFAULT_PASS: guest
-#     volumes:
-#       - rabbitmq_data:/var/lib/rabbitmq
-#     networks:
-#       - rabbitmq_network
-
-# volumes:
-#   rabbitmq_data:
-#   networks:
-
-# rabbitmq_network:
-#   driver: bridge
